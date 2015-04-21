@@ -7,6 +7,12 @@ if (Meteor.isClient) {
         }
     });
     Template.body.events({
+      "click .toggle-checked": function(){
+        Tasks.update(this._id, {$set: {checked: ! this.checked}});
+    }, 
+  "click .delete": function () {
+    Tasks.remove(this._id);
+  },
         "submit .new-task": function(event) {
             // This function is called when the new task form is submitted
 
